@@ -1,11 +1,24 @@
 var ideas = ["final fantisy" , "hey arnold", "mario"];
-for (var i=0; i<ideas.length; i++){
-   var button = $("<button>").text(ideas[i])
-   button.attr("data", ideas[i])
-   $("#button").append(button)
-   }
+function addThings() {
+  $('#button').empty();
+  for (var i=0; i<ideas.length; i++){
+     var button = $("<button>").text(ideas[i])
+     button.attr("data", ideas[i])
+     $("#button").append(button)
+     }
+}
+addThings()
 
-$("button").on("click", function() {
+$("form").submit(function(e){
+  e.preventDefault();
+  var ideatag = $("#data-input")
+ideas.push(ideatag.val())
+addThings()
+});
+
+
+
+$(document).on("click","button" ,function() {
     
       var data = $(this).attr("data");
 
